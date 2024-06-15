@@ -82,6 +82,18 @@ public class Tree {
         System.out.println(node.value);
     }
 
+    public void BFS() {
+        if (root == null) return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node node = queue.remove();
+            if (node.left != null) queue.add(node.left);
+            if (node.right != null) queue.add(node.right);
+
+            System.out.println(node.value);
+        }
+    }
 
     public static void main(String[] args) {
         Tree tree = new Tree();
@@ -94,7 +106,7 @@ public class Tree {
         tree.insert(72);
 
         System.out.println("***************");
-        tree.postOrder();
+        tree.BFS();
         System.out.println("***************");
 
 
