@@ -50,7 +50,7 @@ public class Tree {
         preOrder(root);
     }
 
-    private void preOrder(Node node) {
+    private void preOrder(final Node node) {
         //Raiz - Esquerda - Direita
         if (node == null) return;
         System.out.println(node.value);
@@ -62,7 +62,7 @@ public class Tree {
         inOrder(root);
     }
 
-    private void inOrder(Node node) {
+    private void inOrder(final Node node) {
         //Esquerda - Raiz - Direita
         if (node == null) return;
         inOrder(node.left);
@@ -74,7 +74,7 @@ public class Tree {
         postOrder(root);
     }
 
-    private void postOrder(Node node) {
+    private void postOrder(final Node node) {
         //Esquerda - Direita - Raiz
         if (node == null) return;
         postOrder(node.left);
