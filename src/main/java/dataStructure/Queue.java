@@ -55,6 +55,19 @@ public class Queue {
         System.out.println("***************");
     }
 
+    public void enqueue(int value) {
+        Node newNode = new Node(value);
+
+        if (length == 0) {
+            first = newNode;
+            last = newNode;
+        } else {
+            last.next = newNode;
+            last = newNode;
+        }
+        length++;
+    }
+
     public static void main(String[] args) {
 
         Queue myQueue = new Queue(1);
@@ -63,5 +76,14 @@ public class Queue {
         myQueue.getLast();
         myQueue.getLength();
         myQueue.print();
+
+        myQueue.enqueue(2);
+        myQueue.enqueue(3);
+
+        myQueue.getFirst();
+        myQueue.getLast();
+        myQueue.getLength();
+        myQueue.print();
     }
+
 }
