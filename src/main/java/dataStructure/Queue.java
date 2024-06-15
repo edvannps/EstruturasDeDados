@@ -16,6 +16,8 @@ public class Queue {
         Node(int value) {
             this.value = value;
         }
+
+        public int getValue() { return this.value; }
     }
 
     public Queue(int value) {
@@ -68,21 +70,40 @@ public class Queue {
         length++;
     }
 
+    public Node dequeue() {
+        if (length == 0) return null;
+        Node temp = first;
+        if (length == 1) {
+            first = null;
+            last = null;
+        } else {
+            first = first.next;
+            temp.next = null;
+        }
+        length--;
+        return temp;
+    }
+
     public static void main(String[] args) {
 
         Queue myQueue = new Queue(1);
-
-        myQueue.getFirst();
-        myQueue.getLast();
-        myQueue.getLength();
-        myQueue.print();
-
         myQueue.enqueue(2);
         myQueue.enqueue(3);
 
-        myQueue.getFirst();
-        myQueue.getLast();
-        myQueue.getLength();
+        System.out.println(myQueue.dequeue().value);
+        System.out.println(myQueue.dequeue().value);
+        System.out.println(myQueue.dequeue().value);
+
+//        myQueue.getFirst();
+//        myQueue.getLast();
+//        myQueue.getLength();
+//        myQueue.print();
+//
+//
+//
+//        myQueue.getFirst();
+//        myQueue.getLast();
+//        myQueue.getLength();
         myQueue.print();
     }
 
