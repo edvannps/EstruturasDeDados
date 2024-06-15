@@ -70,6 +70,19 @@ public class Tree {
         inOrder(node.right);
     }
 
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    private void postOrder(Node node) {
+        //Esquerda - Direita - Raiz
+        if (node == null) return;
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.value);
+    }
+
+
     public static void main(String[] args) {
         Tree tree = new Tree();
         tree.insert(37);
@@ -81,7 +94,7 @@ public class Tree {
         tree.insert(72);
 
         System.out.println("***************");
-        tree.inOrder();
+        tree.postOrder();
         System.out.println("***************");
 
 
