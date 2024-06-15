@@ -57,6 +57,39 @@ public class BST {
         else return contains(root.left, value);
     }
 
+    public int minValue(Node currentNode) {
+        while (currentNode.left != null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode.value;
+    }
+
+    public void deleteNode(int value) {
+        root = deleteNode(root, value);
+    }
+
+    private Node deleteNode(final Node root, final int value) {
+        if (root == null) return null;
+
+        if (value < root.value) {
+            root.left = deleteNode(root.left, value);
+        } else if (value > root.value) {
+            root.right = deleteNode(root.right, value);
+        } else {
+            if ((root.left == null) && (root.right == null)) {
+                return null;
+            } else if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            } else {
+                int minValue = minValue(root.right);
+                root.value = minValue;
+                root.right = deleteNode(root.right, minValue);
+            }
+        }
+        return root;
+    }
 
 
     public static void main(String[] args) {
@@ -69,9 +102,7 @@ public class BST {
         bTree.insert(8);
         bTree.insert(17);
 
-        System.out.println(bTree.contains(11));
-        System.out.println(bTree.contains(99));
-
-//        bTree.inOrder();
+        bTree.deleteNode(8);
+        bTree.inOrder();
     }
 }
